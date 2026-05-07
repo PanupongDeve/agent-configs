@@ -1,0 +1,1 @@
+npx skills@latest add thaitype/chief#canary.v4
