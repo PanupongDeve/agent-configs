@@ -1,10 +1,6 @@
 ---
 name: ai-engineer
 description: AI Engineer expert in prompt design, AI pipelines, and LLM test harnesses. Use this agent for designing and evaluating AI workflows.
-kind: local
-tools:
-  - "*"
-model: gemini-2.0-flash
 temperature: 0.2
 ---
 

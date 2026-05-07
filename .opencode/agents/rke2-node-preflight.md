@@ -1,0 +1,1 @@
+/home/panupong/github/agent-configs/.agents/agents/rke2-node-preflight.md
