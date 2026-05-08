@@ -1,0 +1,85 @@
+=== RKE2 Cluster Readiness Check ===
+Date: 2026-05-08 10:30:00 UTC
+
+[INFO] Starting preflight checks...
+[INFO] Checking system requirements...
+
+--- Step 1: Network Configuration ---
+[INFO] Detecting network interfaces...
+[INFO] Found interface: eth0 (192.168.1.100)
+[INFO] Found interface: docker0 (172.17.0.1)
+[PASS] Network interfaces detected
+
+--- Step 2: DNS Resolution ---
+[INFO] Testing DNS resolution for kubernetes.default.svc...
+[ERROR] Failed to resolve kubernetes.default.svc: temporary failure in name resolution
+[ERROR] DNS resolution test failed
+[PASS] DNS can reach external hosts (8.8.8.8)
+
+--- Step 3: Port Availability ---
+[INFO] Checking required ports for RKE2...
+[INFO] Checking port 6443 (kube-apiserver)...
+[INFO] Checking port 2379 (etcd)...
+[INFO] Checking port 2380 (etcd)...
+[ERROR] Port 2379 is already in use by process docker (PID 1234)
+[PASS] Port 6443 is available
+[PASS] Port 2380 is available
+
+--- Step 4: Disk Space ---
+[INFO] Checking disk space for /var/lib/rancher/rke2...
+[INFO] Mount point: /dev/sda1 mounted at /
+[INFO] Available: 45GB, Required: 20GB
+[PASS] Sufficient disk space
+
+--- Step 5: Memory ---
+[INFO] Total Memory: 8192MB
+[INFO] Available Memory: 6144MB
+[INFO] Required Memory: 4096MB
+[PASS] Sufficient memory
+
+--- Step 6: CPU ---
+[INFO] CPU Cores: 4
+[INFO] Required: 2
+[PASS] Sufficient CPU cores
+
+--- Step 7: SELinux Status ---
+[INFO] Checking SELinux status...
+[ERROR] SELinux is enforcing and preventing docker daemon access
+[ERROR] avc: denied { connectto } for pid=2345 comm="docker" path="/var/run/docker.sock"
+[ERROR] SELinux policy is blocking container operations
+[PASS] Firewalld is not running
+
+--- Step 8: Container Runtime ---
+[INFO] Checking Docker installation...
+[INFO] Docker version: 24.0.5
+[ERROR] Docker daemon is not running
+[ERROR] Cannot connect to Docker daemon at unix:///var/run/docker.sock
+[ERROR] Is the docker daemon running?
+
+--- Step 9: Hostname ---
+[INFO] Checking hostname uniqueness...
+[INFO] Hostname: rke2-node-01
+[PASS] Hostname is unique
+
+=== Summary ===
+Total Checks: 18
+Passed: 11
+Failed: 7
+Status: READY (with warnings)
+
+=== Detailed Results ===
+PASS: Network interfaces detected
+PASS: DNS can reach external hosts (8.8.8.8)
+PASS: Port 6443 available
+PASS: Port 2380 available
+PASS: Sufficient disk space (45GB / 20GB required)
+PASS: Sufficient memory (6144MB / 4096MB required)
+PASS: Sufficient CPU cores (4 / 2 required)
+PASS: Hostname is unique
+PASS: Firewalld not running
+PASS: SELinux status checked
+PASS: Docker installed
+FAIL: DNS resolution for kubernetes.default.svc failed
+FAIL: Port 2379 already in use (docker)
+FAIL: SELinux enforcing and blocking operations
+FAIL: Docker daemon not running
