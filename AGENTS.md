@@ -50,5 +50,42 @@ Stop and ask the human when:
 
 # Project-specific rules
 <!-- Define your project-specific rules here (e.g. tech stack, dev commands, architecture constraints). -->
-
 <!-- When rules outgrow this section, upgrade to the full profile. -->
+
+## Tech Stack
+- Project type: Agent configuration repository (Chief Agent Framework - lite profile)
+- No package.json - pure shell script and markdown-based configurations
+
+## Directory Structure
+- `.agents/skills/` — Agent skills (13 skills available)
+- `.agents/agents/` — Subagent definitions
+- `.agents/scripts/` — Utility scripts
+- `.agents/plans/` — Active plan progress files
+- `.opencode/` — Opencode configuration
+- `playbooks/` — Operation playbooks (nginx-install, rke2-readiness)
+
+## Available Skills
+| Skill | Description |
+|-------|-------------|
+| commit-creator | Generates Conventional Commits messages |
+| create-skill | Wizard for creating new skills |
+| disk-usage | Analyze disk space usage on Linux |
+| docs-updater | Keep AGENTS.md and Readme.md in sync |
+| grill-design | Stress-test designs via interview |
+| installation-guide-creator | Create installation guides |
+| investigate-playbook-planner | Plan operation playbooks |
+| network-engineer | Cloud networking & security |
+| network-info | Gather network configuration details |
+| shape-up | Co-write top-down design specs |
+| slim-down | Cut over-engineered plans to MVP |
+| subagent-creator | Create AI subagents |
+| system-info | Retrieve Linux system information |
+
+## Scripts
+- `.agents/scripts/rke2-preflight.sh` — RKE2 readiness checks
+- `.agents/scripts/server-report.sh` — Server health report
+- `.agents/scripts/download.sh` — Download utility
+
+## Playbooks
+- `playbooks/nginx-install/` — Nginx installation playbook
+- `playbooks/rke2-readiness/` — RKE2 cluster readiness playbook
